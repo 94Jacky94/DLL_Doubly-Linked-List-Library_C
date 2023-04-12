@@ -2,7 +2,7 @@
 #define HEADER_H
 #define ERROR 1
 #define FAIL 0
-#define	SUCCES 1
+#define	SUCCESS 1
 /*Header file for doubly linked list*/
 
 typedef struct dll_node //content of a node.

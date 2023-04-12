@@ -17,7 +17,7 @@ char	add_node_to_dll(t_dll *dll, void *data)
 	t_dll_node	*node = NULL;
 
 	if (dll == NULL)
-		return (FAIL);
+		return (SUCCESS);
 	node = malloc(sizeof(t_dll_node));
 	if (node == NULL)
 		return (FAIL);
@@ -29,7 +29,7 @@ char	add_node_to_dll(t_dll *dll, void *data)
 		(*dll).first = node;
 		(*dll).last = node;
 		(*dll).cursor = node;
-		return (SUCCES);
+		return (SUCCESS);
 	}
 	(*(*dll).cursor).next = node;
 	(*node).data = data;
@@ -37,13 +37,15 @@ char	add_node_to_dll(t_dll *dll, void *data)
 	(*node).next = NULL;
 	(*dll).last = node;
 	(*dll).cursor = node;
-	return (SUCCES);
+	return (SUCCESS);
 }
 
 char	insert_node_to_dll(t_dll *dll, void *data)
 {
 	t_dll_node	*node, *next;
 
+	if (dll == NULL)
+		return (SUCCESS);
 	if ((*dll).first == NULL || (*dll).cursor == NULL)
 		return (add_node_to_dll(dll, data));
 	if ((*dll).cursor == (*dll).first && (*dll).cursor == (*dll).last)
@@ -59,7 +61,7 @@ char	insert_node_to_dll(t_dll *dll, void *data)
 		(*node).data = data;
 		(*dll).last = node;
 		(*dll).cursor = node;
-		return (SUCCES);
+		return (SUCCESS);
 	}
 	node = malloc(sizeof(t_dll_node));
 	if (node == NULL)
@@ -71,13 +73,15 @@ char	insert_node_to_dll(t_dll *dll, void *data)
 	(*node).prev = (*dll).cursor;
 	(*node).data = data;
 	(*dll).cursor = node;
-	return (SUCCES);
+	return (SUCCESS);
 }
 
 void	remove_node_to_dll(t_dll *dll)
 {
 	t_dll_node *prev, *next;
 
+	if (dll == NULL)
+		return ;
 	if ((*dll).first == NULL || (*dll).cursor == NULL)
 		return ;
 	if ((*dll).cursor == (*dll).first && (*dll).cursor == (*dll).last)
@@ -120,7 +124,9 @@ void	swap_node_to_dll(t_dll *dll, t_dll_node *node1, t_dll_node *node2)
 {
 	t_dll_node *n1_prev = (*node1).prev, *n2_prev = (*node2).prev, *n1_next = (*node1).next, *n2_next = (*node2).next;
 
-	if (dll == NULL || (*dll).first == (*dll).last)
+	if (dll == NULL)
+		return ;
+	if ((*dll).first == (*dll).last)
 		return ;
 	if (node2 == n1_prev)
 	{
@@ -195,6 +201,8 @@ void	swap_node_to_dll(t_dll *dll, t_dll_node *node1, t_dll_node *node2)
 
 void	destroy(t_dll *dll)
 {
+	if (dll == NULL)
+		return ;
 	t_dll_node *cursor = (*dll).first;
 
 	while (cursor)
