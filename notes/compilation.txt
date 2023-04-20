@@ -1,0 +1,10 @@
+generate the application's objectfiles:
+	gcc -c app_file1.c -o app_file1.o
+	gcc -c app_file2.c -o app_file1.o
+	...
+
+Compilation of the app (using the app's objefiles and the static library):
+	gcc *.o -o app_name -L -l_dll
+
+execution:
+	./app_name

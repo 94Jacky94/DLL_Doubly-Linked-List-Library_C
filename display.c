@@ -4,11 +4,10 @@
 void	print_dll_int(t_dll_node *cursor)
 {
 	int				data;
-	long long int	mask = 0xFFFFFFFFFFFFFFF;
 
 	while (cursor)
 	{
-		data = (int)((long long int)((*cursor).data) & mask);
+		data = ((long long int)((*cursor).data));
 		printf("Data = %d |prev = %p node = %p next = %p|\n", data, (*cursor).prev, cursor, (*cursor).next);
 		cursor = (*cursor).next;
 	}
@@ -17,11 +16,10 @@ void	print_dll_int(t_dll_node *cursor)
 void	print_dll_char(t_dll_node *cursor)
 {
 	char			data;
-	long long int	mask = 0xFFFFFFFFFFFFFFF;
 
 	while (cursor)
 	{
-		data = (char)((long long int)((*cursor).data) & mask);
+		data = ((long long int)((*cursor).data));
 		printf("Data = %c |prev = %p node = %p next = %p|\n", data,  (*cursor).prev, cursor, (*cursor).next);
 		cursor = (*cursor).next;
 	}

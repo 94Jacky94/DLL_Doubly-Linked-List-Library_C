@@ -8,6 +8,7 @@ t_dll	*get_new_dll()
 	if (dll == NULL)
 		return (NULL);
 	(*dll).first = NULL;
+	(*dll).cursor = NULL;
 	(*dll).last = NULL;
 	return (dll);
 }
